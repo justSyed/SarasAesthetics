@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laser Clinic - Sara's Aesthetics and Beauty</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Pastel Color Palette */
+            --primary-pink: #ffe5ec;
+            --secondary-pink: #ffb3c6;
+            --accent-peach: #ffc2d1;
+            --soft-mint: #e0f4f1;
+            --soft-lavender: #eecbff;
+            --text-dark: #4a4a4a;
+            --text-light: #7a7a7a;
+            --white: #ffffff;
+            --btn-hover: #fb6f92;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: #593535;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--soft-lavender);
+            padding: 10px 0;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .top-bar span { margin: 0 15px; color: #555; }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fb6f92;
+            font-family: 'Playfair Display', serif;
+        }
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { font-weight: 500; position: relative; }
+        .nav-links a:hover { color: #fb6f92; }
+        .book-btn {
+            background-color: var(--secondary-pink);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        .book-btn:hover { background-color: var(--btn-hover); }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(255, 229, 236, 0.8), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1560750588-73207b1ef5b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        .page-header h1 { font-size: 3rem; margin-bottom: 10px; }
+        .breadcrumb { color: #fb6f92; font-weight: 500; }
+
+        .section-padding { padding: 80px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .text-center { text-align: center; }
+
+        /* Technology Section */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .tech-content h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .tech-content p { color: var(--text-light); margin-bottom: 15px; }
+        .tech-img { 
+            width: 100%; 
+            border-radius: 20px; 
+            box-shadow: -20px 20px 0 var(--soft-mint);
+        }
+        
+        /* Benefits Icons */
+        .benefits-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .benefit-item i {
+            font-size: 2rem;
+            color: #fb6f92;
+            margin-bottom: 10px;
+        }
+        .benefit-item h4 { font-size: 1rem; }
+
+        /* Pricing Area */
+        .pricing-section {
+            background-color: var(--soft-mint);
+        }
+
+        .category-title {
+            text-align: center;
+            margin: 40px 0 20px 0;
+            color: #555;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .area-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .area-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .area-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-color: var(--secondary-pink);
+        }
+        .area-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+        .area-price {
+            color: #fb6f92;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .package-note {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        .faq-answer {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-pink);
+            padding-top: 60px;
+            border-top: 1px solid white;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+        .footer-col h4 { margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            color: var(--text-dark);
+        }
+        .copyright { text-align: center; padding: 20px; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .tech-grid { grid-template-columns: 1fr; }
+            .benefits-row { flex-wrap: wrap; gap: 20px; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span><i class="fas fa-envelope"></i> info@sarasaesthetics.com</span>
+        <span><i class="fas fa-phone-alt"></i> 01582 123456</span>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Sara's Aesthetics</a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="facials.html">Facials</a>
+                <a href="laser-clinic.html" style="color: #fb6f92;">Laser Clinic</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <a href="contact.html" class="book-btn">Book Now</a>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Laser Clinic</h1>
+            <div class="breadcrumb">Home • Laser Hair Removal</div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="tech-grid">
+                <div class="tech-content">
+                    <span style="color: #fb6f92; font-weight: 600; text-transform: uppercase;">Advanced Technology</span>
+                    <h2>Silky Smooth Skin, <br>Permanently.</h2>
+                    <p>Say goodbye to razors, waxing, and ingrown hairs. At Sara's Aesthetics, we use medical-grade Diode and IPL Laser technology to provide safe, effective, and virtually pain-free hair removal for all skin types.</p>
+                    <p>Our advanced cooling systems ensure maximum comfort while targeting the hair follicle directly, preventing regrowth and leaving your skin softer than ever before.</p>
+                    
+                    <div class="benefits-row">
+                        <div class="benefit-item">
+                            <i class="fas fa-gem"></i>
+                            <h4>Pain Free</h4>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-stopwatch"></i>
+                            <h4>Fast Results</h4>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-double"></i>
+                            <h4>Safe & Effective</h4>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://www.skininnovation.co.uk/wp-content/uploads/SkinPen-Microneedling-01.jpeg.webp" alt="Laser Treatment" class="tech-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding pricing-section">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 50px;">
+                <span style="color: #fb6f92; font-weight: 600; text-transform: uppercase;">Transparent Pricing</span>
+                <h2>Laser Hair Removal</h2>
+                <p>Prices per session. Discounts available for courses of 6 or 8.</p>
+            </div>
+
+            <h3 class="category-title"><i class="far fa-smile" style="margin-right: 10px; color: #fb6f92;"></i>Face Area</h3>
+            <div class="area-grid">
+                <div class="area-card">
+                    <div class="area-name">Upper Lip</div>
+                    <div class="area-price">£25</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-name">Chin</div>
+                    <div class="area-price">£30</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-name">Sideburns</div>
+                    <div class="area-price">£30</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-name">Jawline</div>
+                    <div class="area-price">£35</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-name">Full Face</div>
+                    <div class="area-price">£75</div>
+                    <div class="package-note">(Includes Neck)</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-name">Neck</div>
+                    <div class="area-price">£35</div>
+                </div>
+            </div>
+
+            <h3 class="category-title"><i class="far fa-user" style="margin-right: 10px; color: #fb6f92;"></i>Body Area</h3>
+            <div class="area-grid">
+                <div class="area-card">
+                    <div class="area-name">Underarms</div>
+                    <div class="area-price">£45</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-name">Half Arms</div>
+                    <div class="area-price">£60</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-name">Full Arms</div>
+                    <div class="area-price">£90</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-name">Half Legs</div>
+                    <div class="area-price">£85</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-name">Full Legs</div>
+                    <div class="area-price">£120</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-name">Bikini Line</div>
+                    <div class="area-price">£40</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-name">Hollywood / Brazilian</div>
+                    <div class="area-price">£75</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-name">Full Back</div>
+                    <div class="area-price">£90</div>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 60px;">
+                <div style="background: white; padding: 30px; border-radius: 15px; display: inline-block; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 2px solid var(--primary-pink);">
+                    <h3 style="margin-bottom: 10px;">Full Body Package</h3>
+                    <p style="margin-bottom: 20px;">Includes Full Legs, Full Arms, Underarms, Hollywood & Full Face</p>
+                    <div style="font-size: 2rem; font-weight: 700; color: #fb6f92;">£250 <span style="font-size: 1rem; color: #999; font-weight: 400;">/ session</span></div>
+                    <a href="contact.html" class="book-btn" style="margin-top: 20px; display: inline-block;">Book Now</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container faq-section">
+            <div class="text-center" style="margin-bottom: 40px;">
+                <h2>Common Questions</h2>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How many sessions will I need?</div>
+                <div class="faq-answer">Most clients require between 6 to 8 sessions to achieve 90% hair reduction. This varies depending on your hair thickness and skin type.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Does it hurt?</div>
+                <div class="faq-answer">Our modern laser machines use cooling technology to minimize discomfort. Most clients describe the sensation as a light flick of a rubber band.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Is a patch test required?</div>
+                <div class="faq-answer">Yes, a mandatory patch test is required 24 hours before your first treatment to ensure your skin is suitable for the laser.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What should I do before my appointment?</div>
+                <div class="faq-answer">Please shave the area to be treated 24 hours before your appointment. Avoid sun exposure and fake tan for at least 2 weeks prior.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Sara's Aesthetics</h4>
+                    <p>Where science meets art. Visit us today and experience the difference.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="facials.html">Facials</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Opening Hours</h4>
+                    <ul>
+                        <li>Mon - Wed: 10:30 am – 6:30 pm</li>
+                        <li>Thu - Sat: 10:00 am – 7:00 pm</li>
+                        <li>Sunday: 11:00 am – 6:00 pm</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 8-10 Bute Street, Luton</li>
+                        <li><i class="fas fa-phone"></i> 01582 123456</li>
+                        <li><i class="fas fa-envelope"></i> info@sarasaesthetics.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2024 Sara's Aesthetics and Beauty. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

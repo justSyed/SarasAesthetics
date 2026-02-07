@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Sara's Aesthetics and Beauty</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Pastel Color Palette - Matching Homepage */
+            --primary-pink: #ffe5ec;
+            --secondary-pink: #ffb3c6;
+            --accent-peach: #ffc2d1;
+            --soft-mint: #e0f4f1;
+            --soft-lavender: #eecbff;
+            --text-dark: #4a4a4a;
+            --text-light: #7a7a7a;
+            --white: #ffffff;
+            --btn-hover: #fb6f92;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: #593535;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--soft-lavender);
+            padding: 10px 0;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .top-bar span { margin: 0 15px; color: #555; }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fb6f92;
+            font-family: 'Playfair Display', serif;
+        }
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { font-weight: 500; position: relative; }
+        .nav-links a:hover { color: #fb6f92; }
+        .book-btn {
+            background-color: var(--secondary-pink);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        .book-btn:hover { background-color: var(--btn-hover); }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(255, 229, 236, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1519415387722-a1c3bbef716c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        .page-header h1 { font-size: 3rem; margin-bottom: 10px; }
+        .breadcrumb { color: #fb6f92; font-weight: 500; }
+
+        /* Generic Layout */
+        .section-padding { padding: 80px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .text-center { text-align: center; }
+
+        /* Story Section */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .story-img {
+            position: relative;
+        }
+        .story-img img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 20px 20px 0 var(--soft-mint);
+        }
+        .story-content h2 { font-size: 2.5rem; margin-bottom: 25px; }
+        .story-content p { margin-bottom: 20px; color: var(--text-light); }
+
+        /* Founder Section */
+        .founder-section {
+            background-color: var(--soft-mint);
+        }
+        .founder-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .founder-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--secondary-pink);
+            margin-top: -80px;
+            background-color: #fff;
+        }
+        .founder-quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #555;
+            margin: 20px 0;
+        }
+
+        /* Stats/Why Choose Us */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .stat-item h3 { font-size: 2.5rem; color: #fb6f92; }
+        .stat-item p { font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .testimonial-card {
+            background: var(--primary-pink);
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+        }
+        .quote-icon {
+            font-size: 2rem;
+            color: rgba(255,255,255,0.5);
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-pink);
+            padding-top: 60px;
+            border-top: 1px solid white;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+        .footer-col h4 { margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            color: var(--text-dark);
+        }
+        .copyright { text-align: center; padding: 20px; font-size: 0.9rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .story-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span><i class="fas fa-envelope"></i> info@sarasaesthetics.com</span>
+        <span><i class="fas fa-phone-alt"></i> 01582 123456</span>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Sara's Aesthetics</a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="facials.html">Facials</a>
+                <a href="laser-clinic.html">Laser Clinic</a>
+                <a href="about.html" style="color: #fb6f92;">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <a href="#" class="book-btn">Book Now</a>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>About Our Clinic</h1>
+            <div class="breadcrumb">Home &bull; About Us</div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-img">
+                    <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Clinic Interior">
+                </div>
+                <div class="story-content">
+                    <span style="color: #fb6f92; font-weight: 600; text-transform: uppercase;">Our Journey</span>
+                    <h2>Redefining Beauty <br>Since 2008</h2>
+                    <p>Welcome to Sara's Aesthetics and Beauty. What began as a small passion project has grown into Luton’s premier destination for advanced skincare and laser treatments. Our journey started with a simple mission: to empower individuals to feel confident in their own skin.</p>
+                    <p>We bridge the gap between traditional beauty therapy and medical aesthetics. By combining state-of-the-art technology with a holistic approach, we ensure that every treatment is safe, effective, and tailored specifically to your needs.</p>
+                    
+                    <div style="margin-top: 30px;">
+                        <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <li><i class="fas fa-check-circle" style="color: #fb6f92; margin-right: 10px;"></i> FDA Approved Tech</li>
+                            <li><i class="fas fa-check-circle" style="color: #fb6f92; margin-right: 10px;"></i> Certified Experts</li>
+                            <li><i class="fas fa-check-circle" style="color: #fb6f92; margin-right: 10px;"></i> 15+ Years Experience</li>
+                            <li><i class="fas fa-check-circle" style="color: #fb6f92; margin-right: 10px;"></i> Personalized Care</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding founder-section">
+        <div class="container">
+            <div class="founder-card">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Sara Founder" class="founder-img">
+                <h3>Meet Sara</h3>
+                <span style="color: #7a7a7a; font-size: 0.9rem;">Founder & Lead Aesthetician</span>
+                <p class="founder-quote">"I believe that beauty is not just about how you look, but how you feel. My goal is to provide a sanctuary where science meets art, giving you results that look natural and feel incredible."</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Signature_sample.svg/1200px-Signature_sample.svg.png" style="width: 100px; opacity: 0.5;" alt="Signature">
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>15+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5k+</h3>
+                    <p>Happy Clients</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Treatments</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <span style="color: #fb6f92; font-weight: 600; text-transform: uppercase;">Client Love</span>
+                <h2>What They Say About Us</h2>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p>"I had the 3D Lipo treatment and the results are amazing! Sara is so professional and explains everything clearly. Highly recommend!"</p>
+                    <div style="margin-top: 20px; font-weight: 600;">- Jessica M.</div>
+                    <div style="color: #fb6f92; font-size: 0.8rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                </div>
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p>"The best facial I have ever had. The clinic is spotless, smells amazing, and the staff make you feel like royalty. My skin is glowing."</p>
+                    <div style="margin-top: 20px; font-weight: 600;">- Amara K.</div>
+                    <div style="color: #fb6f92; font-size: 0.8rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                </div>
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p>"I was nervous about getting fillers, but Sara put me at ease immediately. The results are so natural. I will definitely be back."</p>
+                    <div style="margin-top: 20px; font-weight: 600;">- Sarah L.</div>
+                    <div style="color: #fb6f92; font-size: 0.8rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Sara's Aesthetics</h4>
+                    <p>Where science meets art. Visit us today and experience the difference.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="facials.html">Facials</a></li>
+                        <li><a href="laser-clinic.html">Laser Clinic</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Opening Hours</h4>
+                    <ul>
+                        <li>Mon - Wed: 10:30 am – 6:30 pm</li>
+                        <li>Thu - Sat: 10:00 am – 7:00 pm</li>
+                        <li>Sunday: 11:00 am – 6:00 pm</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 8-10 Bute Street, Luton</li>
+                        <li><i class="fas fa-phone"></i> 01582 123456</li>
+                        <li><i class="fas fa-envelope"></i> info@sarasaesthetics.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Sara's Aesthetics and Beauty. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
